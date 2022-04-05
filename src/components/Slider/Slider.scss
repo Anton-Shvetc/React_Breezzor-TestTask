@@ -1,0 +1,100 @@
+
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: #eee;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+
+  font-family: 'Roboto', sans-serif;
+  overflow: hidden;
+}
+.swiper-slide {
+    font-family: 'Montserrat', sans-serif;
+  background-position: center;
+  background-size: cover;
+  background: #000;
+  margin-left: 20px;
+  width: 300px;
+  height: 200px;
+  @media (max-width: 768px) {
+    width: 250px;
+    height: auto;
+  }
+}
+// .swiper-slide img {
+//   display: block;
+//   width: 100%;
+//   height: 100%;
+//   object-fit: cover;
+// }
+
+.slider {
+  position: relative;
+  width: 100%;
+//   height: 60vh;
+  z-index: 3;
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  
+  .swiper-container {
+
+    width: 70%;
+    position: absolute;
+    left: 50%;
+    bottom: -16vw;
+    // transform: translateX(-50%);
+    z-index: 2;
+    padding-bottom: 3vw;
+    @media (max-width: 768px) {
+      bottom: -58vw;
+      padding-bottom: 8vw;
+    }
+  }
+}
+
+.title_wrapper {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 3vw 0 2vw 0;
+  @media (max-width: 768px) {
+    padding-top: 13vw;
+  }
+  .reactLogo {
+    width: 5vw;
+    height: 5vw;
+    margin-right: 1vw;
+    @media (max-width: 768px) {
+      width: 25vw;
+      height: 25vw;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .title_ {
+    color: #fff;
+    text-align: left;
+    font-size: 2vw;
+    @media (max-width: 768px) {
+      font-size: 7vw;
+    }
+    span {
+      display: block;
+    }
+  }
+}
+.swiper-pagination-fraction {
+  bottom: 0;
+}
+.swiper-pagination-bullet {
+  width: 25px;
+  height: 5px;
+  border-radius: 5px;
+}
