@@ -6,24 +6,23 @@ button {
   font: inherit;
   cursor: pointer;
   outline: inherit;
-  padding: 8px 24px;
+  padding: 14px 24px;
   border-radius: 4px;
   margin-left: 16px;
   margin-top: 16px;
+  font-size: 14px;
+  
 }
 
 .btn-blue {
   background: var(--btn-blue);
 }
 .btn-blue:hover {
-	background: var(--btn-blue-hover);
-
+  background: var(--btn-blue-hover);
 }
 .btn-blue:active {
-
-	background: var(--btn-blue-click);
+  background: var(--btn-blue-click);
 }
-
 
 .btn-white {
   color: var(--color-black);
@@ -31,10 +30,6 @@ button {
 }
 
 .btn-white:hover {
-
-
 }
 .btn-white:active {
-
-
 }

@@ -45,13 +45,7 @@ export default function Home() {
           <Button name="Все пляжи страны" className="btn-blue" />
         </div>
 
-        <button
-          onClick={() => {
-            handleRegionClick(12);
-          }}
-        >
-          Click
-        </button>
+
       </div>
     </div>
   );

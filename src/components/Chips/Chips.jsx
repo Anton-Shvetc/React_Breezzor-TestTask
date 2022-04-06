@@ -6,13 +6,13 @@ import { useState, useEffect } from "react";
 
 function Chips() {
   let chips = [
-    { id: 1, name: "Пляжи" },
-    { id: 2, name: "Breezzor Pass" },
-    { id: 3, name: "Впечатления" },
-    { id: 4, name: "Маршруты" },
+    { id: 1, name: "Пляжи", input: "названию пляжа" },
+    { id: 2, name: "Breezzor Pass" , input: "названию отеля"},
+    { id: 3, name: "Впечатления" , input: "названию впечатления"},
+    { id: 4, name: "Маршруты" , input: "названию маршрута"},
   ];
 
-  const [state, setState] = useState("Пляжи");
+  const [state, setState] = useState("названию пляжа");
 
   return (
     <>
@@ -24,7 +24,7 @@ function Chips() {
           <button
             className={styles.chip}
             onClick={() => {
-              setState(item.name);
+              setState(item.input);
               console.log(item.name);
             }}
           >
@@ -34,7 +34,7 @@ function Chips() {
       })}
    
     </div>
-    <Input placeholder ={state}/>
+    <Input placeholder ={ `Поиск по стране, региону, городу, ${state}`}/>
     </>
   );
 }

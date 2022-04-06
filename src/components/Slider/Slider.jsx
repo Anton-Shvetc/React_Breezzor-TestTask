@@ -12,7 +12,10 @@ import SwiperCore, {
   Navigation,
 } from "swiper/core";
 
-SwiperCore.use([EffectCoverflow, Pagination, Navigation]);
+import {useCallback, useRef} from 'react'
+import { Autoplay } from "swiper";
+
+SwiperCore.use([EffectCoverflow, Pagination, Navigation, Autoplay]);
 
 function Slider() {
   const [count, setCount] = useState(0);
@@ -25,11 +28,29 @@ function Slider() {
     { id: 5, name: "Франция" },
   ];
 
+  const swiperRef = useRef(null);
+  SwiperCore.use([Autoplay]); // don't need navigation anymore
+
+  const prevSlide = useCallback(() => {
+    swiperRef.current?.swiper.slidePrev();
+  }, [swiperRef]);
+
+  const nextSlide = useCallback(() => {
+    swiperRef.current?.swiper.slideNext();
+  }, [swiperRef]);
+
   return (
     <div className="slider">
       <h1 className="slider_title">{slides[count].name}</h1>
+      <div className="left-floating-el" onClick={prevSlide}>
+       prev
+      </div>
+       <div className="right-floating-el" onClick={nextSlide}>
+       next
+      </div>
       <Swiper
         navigation={true}
+        ref={swiperRef}
         // effect={"coverflow"}
         centeredSlides={true}
         slidesPerView={window.innerWidth < 768 ? 1 : "auto"}
@@ -41,9 +62,9 @@ function Slider() {
           modifier: 1,
           slideShadows: true,
         }}
-        pagination={{
-          clickable: true,
-        }}
+        // pagination={{
+        //   clickable: true,
+        // }}
         onSlideChange={(swiperCore) => {
           const { activeIndex, snapIndex, previousIndex, realIndex } =
             swiperCore;
@@ -56,6 +77,7 @@ function Slider() {
         }}
         className="mySwiper"
       >
+       
         {/* <SwiperSlide>
    e
         </SwiperSlide>
@@ -75,15 +97,33 @@ function Slider() {
         res
         </SwiperSlide> */}
 
+
+
         {slides.map((i, el) => {
           return (
-            <div key={i.id}>
-              <SwiperSlide>{i.name}</SwiperSlide>
+            <div key={i.id} >
+              <SwiperSlide> {i.name}</SwiperSlide>
             </div>
           );
         })}
+
       </Swiper>
-      <h4>Мир Brezzor огромный, исследуй его!</h4>
+
+  
+   
+      {/* <Swiper
+        ref={swiperRef}
+        spaceBetween={30}
+        slidesPerView={5}
+        autoplay={{ delay: 5000 }}
+        loop
+      >
+        <SwiperSlide>slide 1</SwiperSlide>
+        <SwiperSlide>slide 2</SwiperSlide>
+      </Swiper> */}
+     
+
+      <h4 className="slider_text">Мир Brezzor огромный, исследуй его!</h4>
     </div>
   );
 }
