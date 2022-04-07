@@ -1,22 +1,17 @@
 a {
-    text-decoration: none;
-    color: var(--color-white);
-  
+  text-decoration: none;
+  color: var(--color-white);
 }
 .navigation {
   display: flex;
-
 }
-
 
 a {
   text-decoration: none;
   color: var(--color-white);
 }
 
-
 .chip {
-  
   color: var(--color-black);
   background: var(--chips-bg);
   box-sizing: border-box;

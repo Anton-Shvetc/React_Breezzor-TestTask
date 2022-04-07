@@ -11,8 +11,11 @@ import SwiperCore, {
   Pagination,
   Navigation,
 } from "swiper/core";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faArrowRightLong, faArrowLeftLong} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowRightLong,
+  faArrowLeftLong,
+} from "@fortawesome/free-solid-svg-icons";
 
 import { useCallback, useRef } from "react";
 import { Autoplay } from "swiper";
@@ -31,7 +34,6 @@ function Slider() {
   ];
 
   const swiperRef = useRef(null);
-  SwiperCore.use([Autoplay]); // don't need navigation anymore
 
   const prevSlide = useCallback(() => {
     swiperRef.current?.swiper.slidePrev();
@@ -44,18 +46,16 @@ function Slider() {
   return (
     <div className="slider">
       <h1 className="slider_title">{slides[count].name}</h1>
-      <div className="left-floating-el" onClick={prevSlide}>
-      <FontAwesomeIcon icon={faArrowLeftLong} />
+      <div className="arrow-prev" onClick={prevSlide}>
+        <FontAwesomeIcon icon={faArrowLeftLong} />
       </div>
-      <div className="right-floating-el" onClick={nextSlide}>
-  
-      <FontAwesomeIcon icon={faArrowRightLong} />
+      <div className="arrow-next" onClick={nextSlide}>
+        <FontAwesomeIcon icon={faArrowRightLong} />
       </div>
       <Swiper
         navigation={true}
         watchSlidesVisibility={true}
         ref={swiperRef}
-        // effect={"coverflow"}
         centeredSlides={true}
         slidesPerView={window.innerWidth < 768 ? 1 : "auto"}
         loop={true}
@@ -66,40 +66,12 @@ function Slider() {
           modifier: 1,
           slideShadows: true,
         }}
-        // pagination={{
-        //   clickable: true,
-        // }}
         onSlideChange={(swiperCore) => {
-          const { activeIndex, snapIndex, previousIndex, realIndex } =
-            swiperCore;
+          const { realIndex } = swiperCore;
           setCount(realIndex);
-          console.log(realIndex);
-          // console.log({ activeIndex, snapIndex, previousIndex, realIndex });
-          // console.log(swiperCore.realIndex)
-
-          // return (test)
         }}
         className="mySwiper"
       >
-        {/* <SwiperSlide>
-   e
-        </SwiperSlide>
-        <SwiperSlide>
-        res
-        </SwiperSlide>
-        <SwiperSlide>
-        res
-        </SwiperSlide>
-        <SwiperSlide>
-        res
-        </SwiperSlide>
-        <SwiperSlide>
-        res
-        </SwiperSlide>
-        <SwiperSlide>
-        res
-        </SwiperSlide> */}
-
         {slides.map((i, el) => {
           return (
             <div key={i.id}>
@@ -108,17 +80,6 @@ function Slider() {
           );
         })}
       </Swiper>
-
-      {/* <Swiper
-        ref={swiperRef}
-        spaceBetween={30}
-        slidesPerView={5}
-        autoplay={{ delay: 5000 }}
-        loop
-      >
-        <SwiperSlide>slide 1</SwiperSlide>
-        <SwiperSlide>slide 2</SwiperSlide>
-      </Swiper> */}
 
       <h4 className="slider_text">Мир Brezzor огромный, исследуй его!</h4>
     </div>
