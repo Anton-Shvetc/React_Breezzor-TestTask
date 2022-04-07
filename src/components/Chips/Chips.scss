@@ -1,4 +1,15 @@
 a {
+    text-decoration: none;
+    color: var(--color-white);
+  
+}
+.navigation {
+  display: flex;
+
+}
+
+
+a {
   text-decoration: none;
   color: var(--color-white);
 }
@@ -15,7 +26,7 @@ a {
 
   padding: 15px 24px;
 
-  margin: 0 12px 16px 0;
+  margin: 0 8px 16px 0;
   border-radius: 18px;
   font-size: 12px;
 }
@@ -27,4 +38,8 @@ a {
 }
 .chip:active {
   background: var(--chips-bg-active);
+}
+.active {
+  background: var(--chips-bg-active);
+  color: var(--color-white);
 }

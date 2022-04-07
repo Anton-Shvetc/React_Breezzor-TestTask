@@ -39,3 +39,17 @@ a {
 .chip:active {
   background: var(--chips-bg-active);
 }
+.active {
+  background: var(--chips-bg-active);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  height: 32px;
+
+  padding: 15px 24px;
+
+  margin: 0 8px 16px 0;
+  border-radius: 18px;
+  font-size: 12px;
+  
+}

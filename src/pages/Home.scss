@@ -9,6 +9,7 @@ body {
   position: relative;
 
   width: 100%;
+  min-width: 456px;
   height: 100vh;
   overflow: hidden;
 }
@@ -33,12 +34,14 @@ body {
 
 .container {
   position: relative;
-
   width: 100%;
   max-width: 740px;
-
   z-index: 3;
-  display: block;
+}
+
+.wrapper {
+  position: relative;
+  max-width: 740px;
 }
 .test {
   background: #000;

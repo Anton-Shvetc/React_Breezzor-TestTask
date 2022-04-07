@@ -11,8 +11,10 @@ import SwiperCore, {
   Pagination,
   Navigation,
 } from "swiper/core";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faArrowRightLong, faArrowLeftLong} from '@fortawesome/free-solid-svg-icons'
 
-import {useCallback, useRef} from 'react'
+import { useCallback, useRef } from "react";
 import { Autoplay } from "swiper";
 
 SwiperCore.use([EffectCoverflow, Pagination, Navigation, Autoplay]);
@@ -43,13 +45,15 @@ function Slider() {
     <div className="slider">
       <h1 className="slider_title">{slides[count].name}</h1>
       <div className="left-floating-el" onClick={prevSlide}>
-       prev
+      <FontAwesomeIcon icon={faArrowLeftLong} />
       </div>
-       <div className="right-floating-el" onClick={nextSlide}>
-       next
+      <div className="right-floating-el" onClick={nextSlide}>
+  
+      <FontAwesomeIcon icon={faArrowRightLong} />
       </div>
       <Swiper
         navigation={true}
+        watchSlidesVisibility={true}
         ref={swiperRef}
         // effect={"coverflow"}
         centeredSlides={true}
@@ -77,7 +81,6 @@ function Slider() {
         }}
         className="mySwiper"
       >
-       
         {/* <SwiperSlide>
    e
         </SwiperSlide>
@@ -97,20 +100,15 @@ function Slider() {
         res
         </SwiperSlide> */}
 
-
-
         {slides.map((i, el) => {
           return (
-            <div key={i.id} >
+            <div key={i.id}>
               <SwiperSlide> {i.name}</SwiperSlide>
             </div>
           );
         })}
-
       </Swiper>
 
-  
-   
       {/* <Swiper
         ref={swiperRef}
         spaceBetween={30}
@@ -121,7 +119,6 @@ function Slider() {
         <SwiperSlide>slide 1</SwiperSlide>
         <SwiperSlide>slide 2</SwiperSlide>
       </Swiper> */}
-     
 
       <h4 className="slider_text">Мир Brezzor огромный, исследуй его!</h4>
     </div>
