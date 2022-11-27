@@ -16,23 +16,14 @@ import {
   faArrowRightLong,
   faArrowLeftLong,
 } from "@fortawesome/free-solid-svg-icons";
-
 import { useCallback, useRef } from "react";
 import { Autoplay } from "swiper";
+import {countries} from "../../data/data"
 
 SwiperCore.use([EffectCoverflow, Pagination, Navigation, Autoplay]);
 
 function Slider() {
   const [count, setCount] = useState(0);
-
-  const slides = [
-    { id: 1, name: "Сент Винсент и Гренадины" },
-    { id: 2, name: "Португалия" },
-    { id: 3, name: "Саудовская Аравия" },
-    { id: 4, name: "Испания" },
-    { id: 5, name: "Франция" },
-  ];
-
   const swiperRef = useRef(null);
 
   const prevSlide = useCallback(() => {
@@ -45,7 +36,7 @@ function Slider() {
 
   return (
     <div className="slider">
-      <h1 className="slider_title">{slides[count].name}</h1>
+      <h1 className="slider_title">{countries[count].name}</h1>
       <div className="arrow-prev" onClick={prevSlide}>
         <FontAwesomeIcon icon={faArrowLeftLong} />
       </div>
@@ -72,10 +63,10 @@ function Slider() {
         }}
         className="mySwiper"
       >
-        {slides.map((i, el) => {
+        {countries.map((slide, el) => {
           return (
-            <div key={i.id}>
-              <SwiperSlide> {i.name}</SwiperSlide>
+            <div key={slide.id}>
+              <SwiperSlide> {slide.name}</SwiperSlide>
             </div>
           );
         })}

@@ -1,9 +1,11 @@
 import "./Button.scss";
 
-function Button(props) {
+function Button({ className, name, onClick }) {
   return (
     <>
-      <button className={props.className}>{props.name}</button>
+      <button onClick={onClick} className={className}>
+        {name}
+      </button>
     </>
   );
 }

@@ -1,39 +1,29 @@
 import "./Chips.scss";
 import Input from "../Input/Input";
 import { useState } from "react";
+import { chipsData } from "../../data/data";
+import Button from "../Button/Button";
 
 function Chips() {
-  let chips = [
-    { id: 1, name: "Пляжи", input: "названию пляжа", active: true },
-    { id: 2, name: "Breezzor Pass", input: "названию отеля", active: false },
-    {
-      id: 3,
-      name: "Впечатления",
-      input: "названию впечатления",
-      active: false,
-    },
-    { id: 4, name: "Маршруты", input: "названию маршрута", active: false },
-  ];
-
   const [state, setState] = useState("названию пляжа");
   const [active, setActive] = useState(0);
-  const openChip = (e) => setActive(e);
+  const handleChange = (name, index) => {
+    setState(name);
+    setActive(index);
+  };
 
   return (
     <>
       <div className="navigation">
-        {chips.map((item, index) => {
+        {chipsData.map((chip, index) => {
           return (
-            <button
-              className={`chip ${index === active ? "active" : " "}`}
+            <Button
               onClick={() => {
-                setState(item.input);
-                openChip(index);
+                handleChange(chip.input, index);
               }}
-              data-index={index}
-            >
-              {item.name}
-            </button>
+              name={chip.name}
+              className={`chip ${index === active ? "active" : " "}`}
+            />
           );
         })}
       </div>
